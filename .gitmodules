@@ -1,3 +1,6 @@
 [submodule "lib/RTC"]
 	path = lib/RTC
 	url = https://github.com/adafruit/RTClib/
+[submodule "lib/PS2Keyboard"]
+	path = lib/PS2Keyboard
+	url = https://github.com/yosemitebandit/PS2Keyboard
