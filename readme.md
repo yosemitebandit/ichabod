@@ -10,8 +10,8 @@ and a PS2 Keyboard.
 See `src/ichabod.ino` for connection info.
 
 ### External libraries
-We make use of [PS2Keyboard](http://www.pjrc.com/teensy/td_libs_PS2Keyboard.html) from PJRC
-and [RTC](https://github.com/adafruit/RTClib/) from JeeLabs and adafruit.
+We make use of [RTC](https://github.com/adafruit/RTClib/) from JeeLabs and adafruit
+and a fork of [PS2Keyboard](https://github.com/yosemitebandit/PS2Keyboard).
 
 ### Running
 first time before you run, pull down the RTC submodule:
