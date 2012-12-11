@@ -37,15 +37,45 @@ const int IRQPin = 0;
 
 void setup() {
     delay(1000);
+
+    // PS2Keyboard
     keyboard.begin(DataPin, IRQPin);
+
+    // RTC's TWI
+    Wire.begin();
+    RTC.begin();
+
+    // Serial debug
     Serial.begin(9600);
+
+    // set the RTC to the date and time of sketch compilation
+    if (!RTC.isrunning()) {
+        RTC.adjust(DateTime(__DATE__, __TIME__));
+    }
 }
 
 void loop() {
     if (keyboard.available()) {
+        // read and print keys
         char c = keyboard.read();
-
         Serial.print(c);
+
+        // print the time if 't' is pressed
+        if (c == 't') {
+            DateTime now = RTC.now();
+            Serial.print(now.year(), DEC);
+            Serial.print('/');
+            Serial.print(now.month(), DEC);
+            Serial.print('/');
+            Serial.print(now.day(), DEC);
+            Serial.print(' ');
+            Serial.print(now.hour(), DEC);
+            Serial.print(':');
+            Serial.print(now.minute(), DEC);
+            Serial.print(':');
+            Serial.print(now.second(), DEC);
+            Serial.println();
+        }
     }
 
 }
