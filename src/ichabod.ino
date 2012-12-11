@@ -58,44 +58,44 @@ void setup() {
     }
 }
 
+
+String formatted_time() {
+    // returns the time formatted like so: 12/11/12 0:32:9
+    DateTime now = RTC.now();
+
+    String result;
+    result += now.year();
+    result += '/';
+    result += now.month();
+    result += '/';
+    result += now.day();
+    result += ' ';
+    result += now.hour();
+    result += ':';
+    result += now.minute();
+    result += ':';
+    result += now.second();
+
+    return result;
+}
+
+
 void loop() {
     if (keyboard.available()) {
         // read and print keys
         char c = keyboard.read();
         Serial.print(c);
 
-        // print the time if 't' is pressed
+        // print the time to the terminal if 't' is pressed
         if (c == 't') {
-            DateTime now = RTC.now();
-            Serial.print(now.year(), DEC);
-            Serial.print('/');
-            Serial.print(now.month(), DEC);
-            Serial.print('/');
-            Serial.print(now.day(), DEC);
-            Serial.print(' ');
-            Serial.print(now.hour(), DEC);
-            Serial.print(':');
-            Serial.print(now.minute(), DEC);
-            Serial.print(':');
-            Serial.print(now.second(), DEC);
-            Serial.println();
+            String now = formatted_time();
+            Serial.print(now);
         }
 
         // write the time to a file if 'f' is pressed
         if (c == 'f') {
-            DateTime now = RTC.now();
-            cereal.print(now.year(), DEC);
-            cereal.print('/');
-            cereal.print(now.month(), DEC);
-            cereal.print('/');
-            cereal.print(now.day(), DEC);
-            cereal.print(' ');
-            cereal.print(now.hour(), DEC);
-            cereal.print(':');
-            cereal.print(now.minute(), DEC);
-            cereal.print(':');
-            cereal.print(now.second(), DEC);
-            cereal.println();
+            String now = formatted_time();
+            cereal.print(now);
         }
 
     }
