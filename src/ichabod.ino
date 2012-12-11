@@ -45,6 +45,10 @@ void setup() {
     Wire.begin();
     RTC.begin();
 
+    // OpenLog's serial interface
+    // preconfigured to this baud rate by editing config.txt on the sd card
+    cereal.begin(57600);
+
     // Serial debug
     Serial.begin(9600);
 
@@ -76,6 +80,24 @@ void loop() {
             Serial.print(now.second(), DEC);
             Serial.println();
         }
+
+        // write the time to a file if 'f' is pressed
+        if (c == 'f') {
+            DateTime now = RTC.now();
+            cereal.print(now.year(), DEC);
+            cereal.print('/');
+            cereal.print(now.month(), DEC);
+            cereal.print('/');
+            cereal.print(now.day(), DEC);
+            cereal.print(' ');
+            cereal.print(now.hour(), DEC);
+            cereal.print(':');
+            cereal.print(now.minute(), DEC);
+            cereal.print(':');
+            cereal.print(now.second(), DEC);
+            cereal.println();
+        }
+
     }
 
 }
