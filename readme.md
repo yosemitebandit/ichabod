@@ -10,8 +10,8 @@ and a PS2 Keyboard.
 See `src/ichabod.ino` for connection info.
 
 ### External libraries
-We make use of [RTC](https://github.com/adafruit/RTClib/) from JeeLabs and adafruit
-and a fork of [PS2Keyboard](https://github.com/yosemitebandit/PS2Keyboard).
+I forked the [PS2Keyboard](https://github.com/yosemitebandit/PS2Keyboard) lib from PJRC to get it working with the Leonardo.
+I'm also using the [RTC](https://github.com/adafruit/RTClib/) lib from JeeLabs and adafruit.
 
 ### Running
 first time before you run, pull down the RTC submodule:
